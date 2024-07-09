@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #product-image {
+            width: 34.3%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .quantity-controls button {
+            padding: 5px 10px;
+            font-size: 16px;
+            margin: 0 5px;
+        }
+
+        .quantity-controls input[type="number"] {
+            width: 50px;
+            text-align: center;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            margin-bottom: 20px;
+        }
+
+        .quantity-controls button,
+        .quantity-controls input {
+            margin-right: 10px;
+        }
+
+        #total-price-display {
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #pay-button {
+            background-color: #336fc9;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        h1 {
+            background-color: #294d8f;
+            color: white; /* Mengubah warna teks menjadi putih untuk kontras yang lebih baik */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .header-buttons a, .header-buttons button {
+            margin-left: 10px; /* Memberikan jarak antar tombol */
+            background-color: #336fc9;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .header-buttons a {
+            display: inline-block; /* Memastikan link berperilaku seperti tombol */
+        }
+
+        h1 {
+            margin: 0; /* Menghilangkan margin default */
+            background-color: #294d8f;
+            color: white;
+            padding: 10px 20px;
+        }
+    </style>
+    <script>
+        function checkPassword() {
+            var password = prompt("Please enter the password to access this page:");
+            // Mengubah input menjadi integer dengan parseInt dan membandingkannya dengan 1
+            if (parseInt(password) !== 1) {
+                alert("Incorrect password. Access denied.");
+                window.location.href = 'index.html'; // Redirect ke halaman utama atau login
+            }
+        }
+
+        window.onload = checkPassword;
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Orders</h1>
+        <div class="header-buttons">
+            <a href="dashboard.html">Back to Dashboard</a>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+    <p class="special-message"><strong style="font-size: 1.2em;">NOTES : Return to the Dashboard menu to place an order on the Inventory menu before ordering here.....</strong></p> <!-- Elemen untuk pesan khusus -->
+    <script>
+        function logout() {
+            console.log("Logout function called");  // Debugging statement
+            window.location.href = 'index.html';  // Redirect ke halaman login
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var logoutButton = document.querySelector('button[onclick="logout()"]');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', logout);
+            } else {
+                console.log("Logout button not found");  // Debugging statement
+            }
+        });
+    </script>
+    <h1 id="product-name"></h1>
+    <p id="product-price"></p>
+    <img id="product-image" src="" alt="Product Image">
+    <p id="product-description"></p>
+    <p class="special-message"> Make sure the Internet speed is stable to make payments.</p>
+    <div class="quantity-controls">
+        <button onclick="decreaseQuantity()">-</button>
+        <input type="number" id="quantity" value="1" min="1">
+        <button onclick="increaseQuantity()">+</button>
+    </div>
+    <div id="total-price-display">Total price Rp. 0,-</div>
+    <button id="pay-button">Buy Now!</button>
+    <script>
+        function increaseQuantity() {
+            var quantityInput = document.getElementById('quantity');
+            var currentQuantity = parseInt(quantityInput.value);
+            quantityInput.value = currentQuantity + 1;
+            quantityInput.dispatchEvent(new Event('input'));
+        }
+
+        function decreaseQuantity() {
+            var quantityInput = document.getElementById('quantity');
+            var currentQuantity = parseInt(quantityInput.value);
+            if (currentQuantity > 1) {
+                quantityInput.value = currentQuantity - 1;
+                quantityInput.dispatchEvent(new Event('input'));
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get('name');
+            const price = parseFloat(params.get('price')); // Mengubah string harga menjadi float
+            const image = params.get('image');
+            const description = params.get('description');
+            
+            document.getElementById('product-name').textContent = name;
+            document.getElementById('product-price').textContent = `Rp. ${price.toLocaleString()},-`;
+            document.getElementById('product-image').src = image;
+            document.getElementById('product-description').textContent = description;
+
+            const quantityInput = document.getElementById('quantity');
+            const totalPriceDisplay = document.getElementById('total-price-display');
+
+            function updateTotalPrice() {
+                const quantity = parseInt(quantityInput.value) || 1;
+                const totalPrice = price * quantity;
+                totalPriceDisplay.textContent = `Total Price: Rp. ${totalPrice.toLocaleString()},-`;
+            }
+
+            quantityInput.addEventListener('change', updateTotalPrice);
+            quantityInput.addEventListener('input', updateTotalPrice);
+
+            updateTotalPrice(); // Initial update
+        });
+    </script>
+    <script>
+        document.getElementById('pay-button').addEventListener('click', function() {
+            var productName = document.getElementById('product-name').textContent;
+            var productPrice = document.getElementById('product-price').textContent;
+            var quantity = document.getElementById('quantity').value;
+            var totalPrice = document.getElementById('total-price-display').textContent; // Menambah informasi total Price
+            var message = encodeURIComponent("Saya ingin memesan " + quantity + " " + productName + " seharga " + totalPrice + ". Silakan hubungi saya melalui WhatsApp untuk proses selanjutnya.");
+
+            window.location.href = "https://api.whatsapp.com/send?phone=+6281311897574&text=" + message;
+        });
+    </script>
+</body>
+</html>

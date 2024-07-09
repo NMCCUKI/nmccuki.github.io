@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .announcement {
+            background-color: #336fc9; /* Warna latar belakang hijau */
+            text-align: center; /* Teks rata tengah */
+            width: 100%; /* Lebar penuh */
+            position: fixed; /* Posisi tetap */
+            top: 0; /* Di atas halaman */
+            left: 0; /* Rata kiri */
+            padding: 10px 0; /* Padding atas dan bawah */
+            box-sizing: border-box; /* Menghitung padding dalam lebar */
+        }
+        .announcement p {
+            font-size: 120%; /* Meningkatkan ukuran font sebesar 20% */
+            font-weight: bold; /* Membuat teks menjadi tebal */
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 0.7fr); /* Mengurangi lebar kolom sebesar 30% */
+            gap: 20px; /* Jarak antar item */
+        }
+        /* Sesuaikan ukuran gambar dan elemen lain di dalam grid */
+        .product-grid img {
+            width: 100%; /* Gambar mengisi penuh lebar item grid */
+            height: auto; /* Tinggi gambar otomatis menyesuaikan */
+        }
+        .product-grid .group {
+            padding: 10px; /* Padding di dalam setiap item grid */
+            display: block;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Bayangan kotak untuk estetika */
+        }
+        .h-[350px], .sm\:h-[450px] {
+            height: 350px; /* Tinggi default */
+        }
+        @media (min-width: 640px) {
+            .sm\:h-[450px] {
+                height: 450px; /* Tinggi pada viewport yang lebih besar */
+            }
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .content {
+            flex: 1 0 auto; /* Konten mengambil ruang yang tersedia */
+        }
+        footer {
+            flex-shrink: 0; /* Footer tidak menyusut */
+            text-align: center; /* Teks rata tengah */
+            padding: 20px; /* Padding untuk footer */
+            background-color: #f8f9fa; /* Warna latar belakang footer */
+        }
+        .back-to-dashboard, .logout-button {
+            padding: 10px 20px; /* Padding untuk tombol */
+            text-decoration: none; /* Menghilangkan underline pada link */
+            color: #333; /* Warna teks untuk link */
+            background-color: #ddd; /* Warna latar belakang untuk tombol */
+            border: none; /* Menghilangkan border pada tombol */
+            cursor: pointer; /* Cursor pointer untuk indikasi clickable */
+        }
+        .logout-button {
+            border-radius: 5px; /* Membuat border tombol menjadi bulat */
+        }
+        .product-grid h3, .product-grid p {
+            font-size: 120%; /* Meningkatkan ukuran font sebesar 20% */
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement">
+        <p class="text-center text-sm font-medium">
+            BrainMagic Inventory
+        </p>
+    </div>
+    <h1>Inventory</h1>
+    <div class="product-grid">
+        <!-- Produk 1 -->
+        <a href="#" class="group block" data-name="Morfin 10 ml" data-price="9.500.000" data-image="https://zyfas.com/wp-content/uploads/2020/11/Morphine-Hameln-Injection_2-copy-1000x1000.jpg" data-description="Availability Specifics
+                        1 Box 3 Ampoule
+                        STATUS:
+                        Available
+                        DELIVERY DATE:
+                        1-2 Days After Order
+                        ESTIMATED RECOVERY DATE:
+                        1Q 2025
+                        BACK ORDER REASON:
+                        Manufacturing Delay.">
+            <img src="https://zyfas.com/wp-content/uploads/2020/11/Morphine-Hameln-Injection_2-copy-1000x1000.jpg" />
+            <div class="mt-3 flex justify-between text-sm">
+                <div>
+                    <h3 class="text-gray-900 group-hover:underline group-hover:underline-offset-4">Morfin 10 ml</h3>
+                    <p class="mt-1.5 text-pretty text-xs text-gray-500">Availability Specifics  
+                        1 Box 3 Ampoule
+                        STATUS:
+                        Available
+                        DELIVERY DATE:
+                        1-2 Days After Order
+                        ESTIMATED RECOVERY DATE:
+                        1Q 2025
+                        BACK ORDER REASON:
+                        Manufacturing Delay.</p>
+                </div>
+                <p class="text-gray-900">Rp. 9.500.000</p>
+            </div>
+        </a>
+        <!-- Produk 2 -->
+        <a href="#" class="group block" data-name="Phximore 150 gr" data-price="Rp. 3.800.000" data-image="https://1.bp.blogspot.com/-qp-hsCekjMg/UgOdWIypqgI/AAAAAAAAGjA/GQoA9JtgGl4/s1600/Hosti+Kudus.jpg" data-description="Availability Specifics
+                        STATUS:
+                        Available
+                        DELIVERY DATE:
+                        1-2 Days After Order
+                        ESTIMATED RECOVERY DATE:
+                        1Q 2025
+                        BACK ORDER REASON:
+                        Manufacturing Delay.">
+            <img src="https://1.bp.blogspot.com/-qp-hsCekjMg/UgOdWIypqgI/AAAAAAAAGjA/GQoA9JtgGl4/s1600/Hosti+Kudus.jpg" class="h-[350px] w-full object-cover sm:h-[450px]" />
+            <div class="mt-3 flex justify-between text-sm">
+                <div>
+                    <h3 class="text-gray-900 group-hover:underline group-hover:underline-offset-4">Phximore 150 gr</h3>
+                    <p class="mt-1.5 text-pretty text-xs text-gray-500">Availability Specifics
+                        STATUS:
+                        Available
+                        DELIVERY DATE:
+                        1-2 Days After Order
+                        ESTIMATED RECOVERY DATE:
+                        1Q 2025
+                        BACK ORDER REASON:
+                        Manufacturing Delay.</p>
+                </div>
+                <p class="text-gray-900">Rp. 3.800.000</p>
+            </div>
+        </a>
+    </div>
+    <footer>
+        <a href="dashboard.html" class="back-to-dashboard" style="margin-right: 20px;">Back to Dashboard</a>
+        <button class="logout-button" onclick="logout()">Logout</button>
+    </footer>
+    <script>
+        function logout() {
+            console.log("Logout function called");  // Debugging statement
+            window.location.href = 'index.html';  // Redirect ke halaman login
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var logoutButton = document.querySelector('button[onclick="logout()"]');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', logout);
+            } else {
+                console.log("Logout button not found");  // Debugging statement
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var productLinks = document.querySelectorAll('.product-grid .group');
+
+            productLinks.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Menghentikan navigasi default
+
+                    var productName = this.dataset.name;
+                    var productPrice = this.dataset.price.replace(/Rp\.|\,00/g, '').replace(/\./g, ''); // Membersihkan format harga
+                    var productImage = this.dataset.image;
+                    var productDescription = this.dataset.description;
+
+                    var queryParams = new URLSearchParams({
+                        name: productName,
+                        price: productPrice,
+                        image: productImage,
+                        description: productDescription
+                    }).toString();
+
+                    window.location.href = 'orders.html?' + queryParams; // Mengarahkan ke halaman orders dengan query string
+                });
+            });
+        });
+    </script>
+</body>
+</html>

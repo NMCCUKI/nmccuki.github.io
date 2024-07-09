@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainmagic Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .menu {
+            display: flex;
+            justify-content: center; /* Menengahkan menu secara horizontal */
+            gap: 20px; /* Memberikan jarak antar menu */
+        }
+        .menu a {
+            text-decoration: none; /* Menghilangkan garis bawah pada tautan */
+        }
+        .menu button {
+            cursor: pointer; /* Mengubah cursor menjadi pointer ketika di atas tombol */
+            background-color: rgba(255, 255, 255, 0.5); /* Warna background tembus pandang */
+            border: 1px solid #ccc; /* Border ringan */
+            padding: 10px 20px; /* Padding untuk kenyamanan */
+            border-radius: 5px; /* Membulatkan sudut */
+        }
+        #logoutButton {
+            position: absolute; /* Menggunakan positioning absolute */
+            top: 20px; /* Jarak dari atas */
+            right: 20px; /* Jarak dari kanan */
+            padding: 10px 20px; /* Padding untuk membuat tombol lebih besar */
+            background-color: #336fc9; /* Warna background */
+            color: white; /* Warna teks */
+            border: none; /* Menghilangkan border */
+            border-radius: 5px; /* Membuat sudut tombol menjadi bulat */
+        }
+        .nav_primary-mobile_header {
+            list-style-type: none; /* Menghilangkan bullet points */
+            padding: 0; /* Menghilangkan padding default */
+            margin: 0; /* Menghilangkan margin default */
+        }
+        .nav_primary {
+            background-color: white; /* Warna latar putih */
+            color: white;
+         
+               padding: 10px;
+        }
+
+        .nav_primary a {
+            color: white; /* Warna teks putih */
+            text-decoration: none; /* Menghilangkan garis bawah */
+        }
+
+        .flex_container--xl {
+            display: flex;
+            justify-content: space-between; /* Menjajar elemen secara horizontal */
+        }
+
+        .flex_row {
+            flex-direction: row;
+        }
+
+        .dashboard-container {
+            background-image: url('https://brainmagic.co.in/img/brainmagic-logo.png');
+            background-size: 70% auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            min-height: 100vh; /* Pastikan tinggi minimal sama dengan tinggi viewport */
+            color: white; /* Mengubah warna teks menjadi putih */
+            text-shadow: 1px 1px 2px black; /* Tambahkan bayangan teks untuk meningkatkan legibilitas */
+            padding-top: 20px; /* Menambahkan padding di bagian atas */
+            padding-bottom: 20px; /* Menambahkan padding di bagian bawah */
+        }
+        
+        .morfin-info {
+            background-color: #336fc9; /* Warna hijau yang cerah */
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .morfin-info h2 {
+            margin-top: 0;
+        }
+
+        .morfin-info p {
+            line-height: 1.6;
+        }
+
+        .more-info-link {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #294d8f;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+
+            transition: background-color 0.3s;
+        }
+
+        .more-info-link:hover {
+            background-color: #336fc9;
+        }
+
+        @media (max-width: 768px) {
+            .morfin-info {
+                padding: 10px;
+                margin: 10px;
+            }
+        }
+    </style>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        document.querySelector('a[href="detail-morfin.html"]').addEventListener('click', function(event) {
+            event.preventDefault(); // Menghentikan perilaku default
+            console.log('Navigating to detail page');
+            window.location.href = 'detail-morfin.html'; // Navigasi manual jika diperlukan
+        });
+    </script>
+    <script>
+        const users = [
+            { name: "User", email: "admin@gmail.com", password: "admin123" },
+            { name: "Penyok", email: "penyok@gmail.com", password: "penyok123" },
+            { name: "Jetro NT", email: "jetro@gmail.com", password: "jetro123" },
+            { name: "ibet", email: "ibet@gmail.com", password: "ibet123" }
+        ];
+
+        function getUsername() {
+            // Logika untuk mendapatkan nama pengguna yang sesuai dengan pengguna yang sedang masuk
+            // Misalnya, Anda dapat menggunakan data pengguna yang sedang masuk untuk mengembalikan namanya
+            // Contoh: return currentUser.name;
+            // return users[0].name; // Mengembalikan nama pengguna dari indeks 0
+
+            // Contoh: Mengambil nama pengguna berdasarkan pengguna yang sedang login
+            // Misalnya, jika pengguna "admin@gmail.com" sedang login
+            const currentUser = users.find(user => user.email === "admin@gmail.com");
+            return currentUser ? currentUser.name : "User"; // Mengembalikan nama pengguna atau "Guest" jika tidak ditemukan
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('username').textContent = getUsername();
+        });
+    </script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Ubah h1 menjadi link -->
+        <h1 style="color: rgb(43, 36, 36);">Welcome, <span id="username"></span></h1>
+        <a href="dashboard.html" style="text-decoration: none; color: #24a0da; text-align: center;">
+            <h1>BrainMagic Dashboard</h1>
+        <a href="dashboard.html" style="text-decoration: none; color: #000000; text-align: center;">
+            <h3>DARK MARKET</h3>
+        </a>
+        <div class="menu">
+            <a href="inventory.html"><button>Inventory</button></a>
+            <a href="orders.html"><button id="orders-button">Orders</button></a>
+            <a href="analytics.html"><button>Analytics</button></a>
+        </div>
+        <button id="logoutButton">Logout</button>
+    </div>
+
+    <nav class="nav_primary bg--black">
+        <div id="desktop_nav" class="flex_container--xl flex_row">
+            <ul class="nav_primary-mobile_header">
+                <li class="nav_primary-home">
+                    <a href="/">
+                        <svg class="geckoboard-logo" width="212" height="53" viewBox="0 0 212 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <title>Geckoboard</title>
+                            <desc>Geckoboard</desc>
+    <script>
+        function logout() {
+            console.log("Logout function called");  // Debugging statement
+            window.location.href = 'index.html';  // Pastikan path ini benar
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var logoutButton = document.getElementById('logoutButton');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', logout);
+            } else {
+                console.log("Logout button not found");  // Debugging statement
+            }
+        });
+    </script>
+    <script>
+        function checkPasswordAndRedirect() {
+            var password = prompt("Please enter the password to access the inventory:");
+            if (password === "1") {
+                window.location.href = 'inventory.html';
+            } else {
+                alert("Incorrect password. Access denied.");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var inventoryButton = document.querySelector('a[href="inventory.html"] button');
+            if (inventoryButton) {
+                inventoryButton.addEventListener('click', function(event) {
+                    event.preventDefault();  // Menghentikan navigasi default
+                    checkPasswordAndRedirect();
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var ordersButton = document.querySelector('#orders-button'); // Asumsi tombol memiliki ID 'orders-button'
+            if (ordersButton) {
+                ordersButton.addEventListener('click', function(event) {
+                    event.preventDefault(); // Menghentikan navigasi default
+                    window.location.href = 'orders.html?from=dashboard';
+                });
+            }
+        });
+    </script>
+    </div>
+    <section class="morfin-info">
+        <h2><a href="detail-morfin.html">Morfin By BrainMagic</a></h2>
+        <img src="https://www.arkbh.com/wp-content/uploads/2020/12/morphine_abuse-768x427.jpg.webp" alt="Gambar Morfin">
+        <p> With BrainMagic! We offer more than just ordinary morphine; we provide a comprehensive and innovative solution for managing pain safely and effectively. Made with cutting-edge technology and high-quality materials, our products not only relieve pain but also enhance your quality of life.
+
+        <p> What sets BrainMagic apart from other products is our commitment to your safety and comfort. With a focus on the latest research and strict production standards, we guarantee that every product you buy from us not only delivers the best results but also safeguards your well-being.
+
+        <p> It's not just that, BrainMagic is not just a brand, but a community. With us, you're not alone in your pain management journey. Our team is always ready to provide support, advice, and the information you need. So, why settle for the ordinary when you can have an extraordinary solution with BrainMagic? Experience the difference and discover a better quality of life with us!
+        <p>Morphine is a strong painkiller, classified as an opioid medication. It is primarily used to manage severe pain that cannot be controlled by other analgesics.</p>
+        <p>This medication works directly on the central nervous system to reduce the pain you feel, helping patients in recovery or coping with chronic conditions.</p>
+        <p>It is important to note that morphine use must be under strict medical supervision due to the potential side effects and risk of dependence.</p>
+        <a href="more-info.html" class="more-info-link">Learn more</a>
+    </section>
+    <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+</body>
+</html>

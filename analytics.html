@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainmagic Analytics</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .menu {
+            display: flex;
+            justify-content: center; /* Menengahkan menu secara horizontal */
+            gap: 20px; /* Memberikan jarak antar menu */
+        }
+        .menu a {
+            text-decoration: none; /* Menghilangkan garis bawah pada tautan */
+        }
+        .menu button {
+            cursor: pointer; /* Mengubah cursor menjadi pointer ketika di atas tombol */
+            background-color: rgba(255, 255, 255, 0.5); /* Warna background tembus pandang */
+            border: 1px solid #ccc; /* Border ringan */
+            padding: 10px 20px; /* Padding untuk kenyamanan */
+            border-radius: 5px; /* Membulatkan sudut */
+        }
+        #logoutButton {
+            position: absolute; /* Menggunakan positioning absolute */
+            top: 20px; /* Jarak dari atas */
+            right: 20px; /* Jarak dari kanan */
+            padding: 10px 20px; /* Padding untuk membuat tombol lebih besar */
+            background-color: #336fc9; /* Warna background */
+            color: white; /* Warna teks */
+            border: none; /* Menghilangkan border */
+            border-radius: 5px; /* Membuat sudut tombol menjadi bulat */
+        }
+        .nav_primary-mobile_header {
+            list-style-type: none; /* Menghilangkan bullet points */
+            padding: 0; /* Menghilangkan padding default */
+            margin: 0; /* Menghilangkan margin default */
+        }
+        .nav_primary {
+            background-color: white; /* Warna latar putih */
+            color: white;
+         
+               padding: 10px;
+        }
+
+        .nav_primary a {
+            color: white; /* Warna teks putih */
+            text-decoration: none; /* Menghilangkan garis bawah */
+        }
+
+        .flex_container--xl {
+            display: flex;
+            justify-content: space-between; /* Menjajar elemen secara horizontal */
+        }
+
+        .flex_row {
+            flex-direction: row;
+        }
+
+        .dashboard-container {
+            background-image: url('https://brainmagic.co.in/img/brainmagic-logo.png');
+            background-size: 70% auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            min-height: 100vh; /* Pastikan tinggi minimal sama dengan tinggi viewport */
+            color: white; /* Mengubah warna teks menjadi putih */
+            text-shadow: 1px 1px 2px black; /* Tambahkan bayangan teks untuk meningkatkan legibilitas */
+            padding-top: 20px; /* Menambahkan padding di bagian atas */
+            padding-bottom: 20px; /* Menambahkan padding di bagian bawah */
+        }
+        
+        .morfin-info {
+            background-color: #336fc9; /* Warna hijau yang cerah */
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .morfin-info h2 {
+            margin-top: 0;
+        }
+
+        .morfin-info p {
+            line-height: 1.6;
+        }
+
+        .more-info-link {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #294d8f;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+
+            transition: background-color 0.3s;
+        }
+
+        .more-info-link:hover {
+            background-color: #336fc9;
+        }
+
+        @media (max-width: 768px) {
+            .morfin-info {
+                padding: 10px;
+                margin: 10px;
+            }
+        }
+    </style>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        document.querySelector('a[href="detail-morfin.html"]').addEventListener('click', function(event) {
+            event.preventDefault(); // Menghentikan perilaku default
+            console.log('Navigating to detail page');
+            window.location.href = 'detail-morfin.html'; // Navigasi manual jika diperlukan
+        });
+    </script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Ubah h1 menjadi link -->
+        <a href="analytics.html" style="text-decoration: none; color: #24a0da; text-align: center;">
+            <h1>BrainMagic Analytics</h1>
+        </a>
+        <a href="analytics.html" style="text-decoration: none; color: #000000; text-align: center;">
+            <h3>DARK MARKET</h3>
+        </a>
+        <!-- Tambahkan tombol baru di sini -->
+        <button id="dashboardButton" onclick="window.location.href='dashboard.html';" style="background-color: #336fc9; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; position: absolute; top: 20px; right: 140px;">
+            Back to Dashboard
+        </button>
+        <!-- Tombol Logout yang sudah ada -->
+        <button id="logoutButton" style="background-color: #336fc9; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; position: absolute; top: 20px; right: 20px;">
+            Logout
+        </button>
+    </div>
+
+    <nav class="nav_primary bg--black">
+        <div id="desktop_nav" class="flex_container--xl flex_row">
+            <ul class="nav_primary-mobile_header">
+                <li class="nav_primary-home">
+                    <a href="/">
+                        <svg class="geckoboard-logo" width="212" height="53" viewBox="0 0 212 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <title>Geckoboard</title>
+                            <desc>Geckoboard</desc>
+    <script>
+        function logout() {
+            console.log("Logout function called");  // Debugging statement
+            window.location.href = 'index.html';  // Pastikan path ini benar
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var logoutButton = document.getElementById('logoutButton');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', logout);
+            } else {
+                console.log("Logout button not found");  // Debugging statement
+            }
+        });
+    </script>
+    <script>
+        function checkPasswordAndRedirect() {
+            var password = prompt("Please enter the password to access the inventory:");
+            if (password === "1") {
+                window.location.href = 'inventory.html';
+            } else {
+                alert("Incorrect password. Access denied.");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var inventoryButton = document.querySelector('a[href="inventory.html"] button');
+            if (inventoryButton) {
+                inventoryButton.addEventListener('click', function(event) {
+                    event.preventDefault();  // Menghentikan navigasi default
+                    checkPasswordAndRedirect();
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var ordersButton = document.querySelector('#orders-button'); // Asumsi tombol memiliki ID 'orders-button'
+            if (ordersButton) {
+                ordersButton.addEventListener('click', function(event) {
+                    event.preventDefault(); // Menghentikan navigasi default
+                    window.location.href = 'orders.html?from=dashboard';
+                });
+            }
+        });
+    </script>
+    </div>
+    <section class="morfin-info">
+        <h2><a href="detail-morfin.html">Morfin By BrainMagic</a></h2>
+        <img src="https://i.pinimg.com/564x/2c/42/2e/2c422eb1978dde2ea842a90239a494fe.jpg" style="width: 80%; height: auto; display: block; margin: 0 auto; background-color: blue;">
+        <p> - The Professional Production of Morphine at BrainMagic
+
+        <p> At BrainMagic, the production of morphine is a process grounded in precision, safety, and stringent adherence to industry standards. Our commitment to delivering top-quality, safe, and effective pain management solutions is reflected in every step of our manufacturing process.
+        
+        <p> - State-of-the-Art Facilities
+
+        <p> Our production facilities are equipped with state-of-the-art technology and machinery, ensuring that every batch of morphine meets the highest standards of purity and potency. Our advanced equipment is regularly maintained and updated to incorporate the latest technological advancements in pharmaceutical manufacturing.
+
+        <p> - Sterile Environment
+        
+        <p> Maintaining a sterile environment is paramount in the production of morphine. Our facilities adhere to Good Manufacturing Practices (GMP), which include stringent cleaning and sanitization protocols. Each production area is designed to minimize the risk of contamination, with controlled airflow systems, HEPA filters, and regular environmental monitoring.
+        <p></p>
+        <img src="https://i.pinimg.com/564x/aa/68/3b/aa683be1f24e303e5a647fdd8f6ccd8f.jpg" style="width: 80%; height: auto; display: block; margin: 0 auto; background-color: blue;">
+        </p><div></div>
+        <p> - Enhancing the Experience: Morphine Development at BrainMagic.
+
+            <p> At BrainMagic, we are dedicated to not only providing effective pain management solutions but also enhancing the overall experience for our users. Our approach to developing morphine focuses on making it smoother, more enjoyable, and promoting a sense of relaxation and comfort.
+            
+        <p> - Cutting-Edge Formulations
+
+            <p> Our team of expert pharmacologists and chemists are at the forefront of developing innovative formulations of morphine. We utilize cutting-edge technology and scientific research to create morphine that provides rapid relief from pain while ensuring a smooth and pleasant experience for the user. Our formulations are designed to maximize the therapeutic benefits of morphine while minimizing potential side effects.</p>
+
+        <p> - Advanced Delivery Systems.</p>
+
+            <p>We understand that the method of delivery plays a crucial role in the user experience. That's why we have invested in developing advanced delivery systems that ensure a more consistent and controlled release of morphine. These systems include extended-release tablets, transdermal patches, and novel inhalation methods, providing users with more options to suit their preferences and needs.</p>
+        <img src="https://i.pinimg.com/564x/87/7e/7b/877e7bce1017be610610f28b0f598a6b.jpg" style="width: 80%; height: auto; display: block; margin: 0 auto; background-color: blue;">
+        </p><div></div>
+        <p> - Enhanced Bioavailability.
+
+            <p> One of the key focuses of our development process is enhancing the bioavailability of morphine. By improving the absorption rate and efficiency of the drug, we ensure that users receive the maximum therapeutic benefit with each dose. This not only makes the experience more effective but also allows for a smoother onset of pain relief, promoting a more relaxing and enjoyable experience.
+            
+        <p> - Flavor and Palatability.
+
+            <p>Understanding that taste can significantly impact the user experience, we have developed morphine formulations that are more palatable. Our team works diligently to mask the bitter taste typically associated with morphine, using flavor-enhancing techniques that make oral morphine products more pleasant to consume. This attention to taste ensures that users can take their medication without the discomfort of an unpleasant flavor.
+
+        <p> - Relaxation and Comfort.
+
+            <p> At BrainMagic, we aim to provide more than just pain relief; we strive to promote a sense of relaxation and comfort. Our formulations are designed to induce a calming effect, helping users feel more relaxed and at ease. By incorporating soothing ingredients and utilizing advanced pharmacological techniques, we enhance the overall experience, making it not only effective but also enjoyable.</p>
+        <img src="https://i.pinimg.com/564x/c4/e0/39/c4e039d304f5b84b3194e76fa27be28c.jpg" style="width: 80%; height: auto; display: block; margin: 0 auto; background-color: blue;">
+        <p> Conclusion about BrainMagic
+            BrainMagic is a pioneering company dedicated to revolutionizing pain management solutions through innovation, quality, and user-centric development. With a strong commitment to safety and effectiveness, BrainMagic utilizes state-of-the-art technology and rigorous quality control to produce high-quality morphine and other pharmaceutical products.
+            
+            Our focus on advanced formulations and delivery systems ensures that our products provide not only rapid and effective pain relief but also an enhanced user experience, characterized by smooth, pleasant, and relaxing effects. We prioritize user feedback, continuously incorporating it into our development processes to meet the evolving needs and preferences of our customers.
+            
+            BrainMagic stands out in the pharmaceutical industry for our ethical practices, sustainable operations, and comprehensive educational support for our users. By adhering to strict regulatory standards and maintaining a sterile and controlled production environment, we guarantee the highest levels of product safety and reliability.
+            
+            Our dedication to continuous improvement through extensive research and development efforts allows us to stay at the forefront of medical advancements, providing cutting-edge solutions for pain management. BrainMagic is not just a brand but a trusted partner in the journey toward better health and improved quality of life.
+            
+            Choose BrainMagic for innovative, reliable, and user-friendly pharmaceutical solutions, and experience the difference that professionalism, quality, and care can make in pain management.</p>
+            <p>Perlu diingat bahwa penggunaan morfin harus di bawah pengawasan medis ketat karena potensi efek samping dan risiko ketergantungan.</p>
+        <a href="more-info.html" class="more-info-link">Pelajari lebih lanjut</a>
+        
+    </section>
+    <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+</body>
+</html>
